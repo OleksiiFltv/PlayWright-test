@@ -1,11 +1,17 @@
 // @ts-check
 import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
+import { config as appConfig } from "./config/config.js";
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+
+dotenv.config({
+  path: "./env/.env.dev",
+});
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -14,6 +20,7 @@ const config = defineConfig({
   // testDir: "./tests",
   testMatch: "/tests/**/*.spec.js",
   testIgnore: "/tests/**/*.skip.spec.js",
+  maxFailures: 10,
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -27,18 +34,13 @@ const config = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "https://qauto.forstudy.space/",
-    httpCredentials: {
-      username: "guest",
-      password: "welcome2qauto",
-    },
+    baseURL: appConfig.baseURL,
+    httpCreds: appConfig.httpCredentials,
     viewport: {
       width: 1920,
       height: 1080,
     },
-
     trace: "retain-on-failure",
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     screenshot: "only-on-failure",
   },
