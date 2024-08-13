@@ -25,9 +25,12 @@ const config = defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  globalSetup: require.resolve("./loginState.js"),
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "https://qauto.forstudy.space/",
+    headless: false,
+    storageState: "storageState.json",
     httpCredentials: {
       username: "guest",
       password: "welcome2qauto",
@@ -60,6 +63,7 @@ const config = defineConfig({
     //       baseURL: "https://qauto2.forstudy.space/",
     //     },
     //   },
+
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
