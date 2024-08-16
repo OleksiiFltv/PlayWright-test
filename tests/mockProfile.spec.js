@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("Mock profile", async ({ page }) => {
+test.only("Mock profile", async ({ page }) => {
   const sigInBtn = page.locator(".header_signin");
   const emailInput = page.locator("#signinEmail");
   const passwordInput = page.locator("#signinPassword");
@@ -21,17 +21,17 @@ test("Mock profile", async ({ page }) => {
 
   await page.waitForTimeout(10000);
 
-  await page.route("/api/users/profile", async (route) => {
-    const modifiedResponse = {
-      status: "ok",
-      data: {
-        userId: 131365,
-        photoFilename: "modified-user.png",
-        name: "Andrew",
-        lastName: "MockedUser",
-      },
-    };
+  const modifiedResponse = {
+    status: "ok",
+    data: {
+      userId: 131365,
+      photoFilename: "modified-user.png",
+      name: "Andrew",
+      lastName: "MockedUser",
+    },
+  };
 
+  await page.route("/api/users/profile", async (route) => {
     await route.fulfill({
       contentType: "application/json",
       body: JSON.stringify(modifiedResponse),
@@ -40,8 +40,9 @@ test("Mock profile", async ({ page }) => {
 
   await profileBtn.click();
 
-  const profileName = await page.locator(".profile_name.display-4");
-  const textContent = await profileName.textContent();
+  const profileName = await page.locator(".profile_name");
 
-  expect(textContent).toContain("Andrew MockedUser");
+  expect(profileName).toContainText(
+    `${modifiedResponse.data.name} ${modifiedResponse.data.lastName}`
+  );
 });
