@@ -16,191 +16,191 @@ test.describe.only("add all cars and expenses", () => {
     expect(loginResponse.status()).toBe(200);
   });
 
-  // test.describe(`Create AUDI cars`, () => {
-  //   const carBrand = CAR_BRANDS.Audi;
-  //   for (const carModel of Object.values(CAR_MODELS.AUDI)) {
-  //     test(`Create car ${carBrand.title} ${carModel.title}`, async ({
-  //       request,
-  //     }) => {
-  //       const requestBody = {
-  //         carBrandId: carBrand.id,
-  //         carModelId: carModel.id,
-  //         mileage: Math.floor(Math.random() * 100),
-  //       };
+  test.describe(`Create AUDI cars`, () => {
+    const carBrand = CAR_BRANDS.Audi;
+    for (const carModel of Object.values(CAR_MODELS.AUDI)) {
+      test(`Create car ${carBrand.title} ${carModel.title}`, async ({
+        request,
+      }) => {
+        const requestBody = {
+          carBrandId: carBrand.id,
+          carModelId: carModel.id,
+          mileage: Math.floor(Math.random() * 100),
+        };
 
-  //       const response = await request.post("/api/cars", {
-  //         data: requestBody,
-  //       });
+        const response = await request.post("/api/cars", {
+          data: requestBody,
+        });
 
-  //       const actualBody = await response.json();
+        const actualBody = await response.json();
 
-  //       expect(response.status()).toBe(201);
-  //       expect(actualBody).toEqual({
-  //         status: "ok",
-  //         data: {
-  //           id: expect.any(Number),
-  //           carBrandId: requestBody.carBrandId,
-  //           carModelId: requestBody.carModelId,
-  //           initialMileage: requestBody.mileage,
-  //           updatedMileageAt: expect.any(String),
-  //           carCreatedAt: expect.any(String),
-  //           mileage: requestBody.mileage,
-  //           brand: carBrand.title,
-  //           model: carModel.title,
-  //           logo: carBrand.logoFilename,
-  //         },
-  //       });
-  //     });
-  //   }
-  // });
-  // test.describe(`Create BMW cars`, () => {
-  //   const carBrand = CAR_BRANDS.BMW;
-  //   for (const carModel of Object.values(CAR_MODELS.BMW)) {
-  //     test(`Create car ${carBrand.title} ${carModel.title}`, async ({
-  //       request,
-  //     }) => {
-  //       const requestBody = {
-  //         carBrandId: carBrand.id,
-  //         carModelId: carModel.id,
-  //         mileage: Math.floor(Math.random() * 100),
-  //       };
+        expect(response.status()).toBe(201);
+        expect(actualBody).toEqual({
+          status: "ok",
+          data: {
+            id: expect.any(Number),
+            carBrandId: requestBody.carBrandId,
+            carModelId: requestBody.carModelId,
+            initialMileage: requestBody.mileage,
+            updatedMileageAt: expect.any(String),
+            carCreatedAt: expect.any(String),
+            mileage: requestBody.mileage,
+            brand: carBrand.title,
+            model: carModel.title,
+            logo: carBrand.logoFilename,
+          },
+        });
+      });
+    }
+  });
+  test.describe(`Create BMW cars`, () => {
+    const carBrand = CAR_BRANDS.BMW;
+    for (const carModel of Object.values(CAR_MODELS.BMW)) {
+      test(`Create car ${carBrand.title} ${carModel.title}`, async ({
+        request,
+      }) => {
+        const requestBody = {
+          carBrandId: carBrand.id,
+          carModelId: carModel.id,
+          mileage: Math.floor(Math.random() * 100),
+        };
 
-  //       const response = await request.post("/api/cars", {
-  //         data: requestBody,
-  //       });
+        const response = await request.post("/api/cars", {
+          data: requestBody,
+        });
 
-  //       const actualBody = await response.json();
+        const actualBody = await response.json();
 
-  //       expect(response.status()).toBe(201);
-  //       expect(actualBody).toEqual({
-  //         status: "ok",
-  //         data: {
-  //           id: expect.any(Number),
-  //           carBrandId: requestBody.carBrandId,
-  //           carModelId: requestBody.carModelId,
-  //           initialMileage: requestBody.mileage,
-  //           updatedMileageAt: expect.any(String),
-  //           carCreatedAt: expect.any(String),
-  //           mileage: requestBody.mileage,
-  //           brand: carBrand.title,
-  //           model: carModel.title,
-  //           logo: carBrand.logoFilename,
-  //         },
-  //       });
-  //     });
-  //   }
-  // });
-  // test.describe(`Create Ford cars`, () => {
-  //   const carBrand = CAR_BRANDS.Ford;
-  //   for (const carModel of Object.values(CAR_MODELS.FORD)) {
-  //     test(`Create car ${carBrand.title} ${carModel.title}`, async ({
-  //       request,
-  //     }) => {
-  //       const requestBody = {
-  //         carBrandId: carBrand.id,
-  //         carModelId: carModel.id,
-  //         mileage: Math.floor(Math.random() * 100),
-  //       };
+        expect(response.status()).toBe(201);
+        expect(actualBody).toEqual({
+          status: "ok",
+          data: {
+            id: expect.any(Number),
+            carBrandId: requestBody.carBrandId,
+            carModelId: requestBody.carModelId,
+            initialMileage: requestBody.mileage,
+            updatedMileageAt: expect.any(String),
+            carCreatedAt: expect.any(String),
+            mileage: requestBody.mileage,
+            brand: carBrand.title,
+            model: carModel.title,
+            logo: carBrand.logoFilename,
+          },
+        });
+      });
+    }
+  });
+  test.describe(`Create Ford cars`, () => {
+    const carBrand = CAR_BRANDS.Ford;
+    for (const carModel of Object.values(CAR_MODELS.FORD)) {
+      test(`Create car ${carBrand.title} ${carModel.title}`, async ({
+        request,
+      }) => {
+        const requestBody = {
+          carBrandId: carBrand.id,
+          carModelId: carModel.id,
+          mileage: Math.floor(Math.random() * 100),
+        };
 
-  //       const response = await request.post("/api/cars", {
-  //         data: requestBody,
-  //       });
+        const response = await request.post("/api/cars", {
+          data: requestBody,
+        });
 
-  //       const actualBody = await response.json();
+        const actualBody = await response.json();
 
-  //       expect(response.status()).toBe(201);
-  //       expect(actualBody).toEqual({
-  //         status: "ok",
-  //         data: {
-  //           id: expect.any(Number),
-  //           carBrandId: requestBody.carBrandId,
-  //           carModelId: requestBody.carModelId,
-  //           initialMileage: requestBody.mileage,
-  //           updatedMileageAt: expect.any(String),
-  //           carCreatedAt: expect.any(String),
-  //           mileage: requestBody.mileage,
-  //           brand: carBrand.title,
-  //           model: carModel.title,
-  //           logo: carBrand.logoFilename,
-  //         },
-  //       });
-  //     });
-  //   }
-  // });
-  // test.describe(`Create Porsche cars`, () => {
-  //   const carBrand = CAR_BRANDS.Porsche;
-  //   for (const carModel of Object.values(CAR_MODELS.PORSCHE)) {
-  //     test(`Create car ${carBrand.title} ${carModel.title}`, async ({
-  //       request,
-  //     }) => {
-  //       const requestBody = {
-  //         carBrandId: carBrand.id,
-  //         carModelId: carModel.id,
-  //         mileage: Math.floor(Math.random() * 100),
-  //       };
+        expect(response.status()).toBe(201);
+        expect(actualBody).toEqual({
+          status: "ok",
+          data: {
+            id: expect.any(Number),
+            carBrandId: requestBody.carBrandId,
+            carModelId: requestBody.carModelId,
+            initialMileage: requestBody.mileage,
+            updatedMileageAt: expect.any(String),
+            carCreatedAt: expect.any(String),
+            mileage: requestBody.mileage,
+            brand: carBrand.title,
+            model: carModel.title,
+            logo: carBrand.logoFilename,
+          },
+        });
+      });
+    }
+  });
+  test.describe(`Create Porsche cars`, () => {
+    const carBrand = CAR_BRANDS.Porsche;
+    for (const carModel of Object.values(CAR_MODELS.PORSCHE)) {
+      test(`Create car ${carBrand.title} ${carModel.title}`, async ({
+        request,
+      }) => {
+        const requestBody = {
+          carBrandId: carBrand.id,
+          carModelId: carModel.id,
+          mileage: Math.floor(Math.random() * 100),
+        };
 
-  //       const response = await request.post("/api/cars", {
-  //         data: requestBody,
-  //       });
+        const response = await request.post("/api/cars", {
+          data: requestBody,
+        });
 
-  //       const actualBody = await response.json();
+        const actualBody = await response.json();
 
-  //       expect(response.status()).toBe(201);
-  //       expect(actualBody).toEqual({
-  //         status: "ok",
-  //         data: {
-  //           id: expect.any(Number),
-  //           carBrandId: requestBody.carBrandId,
-  //           carModelId: requestBody.carModelId,
-  //           initialMileage: requestBody.mileage,
-  //           updatedMileageAt: expect.any(String),
-  //           carCreatedAt: expect.any(String),
-  //           mileage: requestBody.mileage,
-  //           brand: carBrand.title,
-  //           model: carModel.title,
-  //           logo: carBrand.logoFilename,
-  //         },
-  //       });
-  //     });
-  //   }
-  // });
-  // test.describe(`Create Fiat cars`, () => {
-  //   const carBrand = CAR_BRANDS.Fiat;
-  //   for (const carModel of Object.values(CAR_MODELS.FIAT)) {
-  //     test(`Create car ${carBrand.title} ${carModel.title}`, async ({
-  //       request,
-  //     }) => {
-  //       const requestBody = {
-  //         carBrandId: carBrand.id,
-  //         carModelId: carModel.id,
-  //         mileage: Math.floor(Math.random() * 100),
-  //       };
+        expect(response.status()).toBe(201);
+        expect(actualBody).toEqual({
+          status: "ok",
+          data: {
+            id: expect.any(Number),
+            carBrandId: requestBody.carBrandId,
+            carModelId: requestBody.carModelId,
+            initialMileage: requestBody.mileage,
+            updatedMileageAt: expect.any(String),
+            carCreatedAt: expect.any(String),
+            mileage: requestBody.mileage,
+            brand: carBrand.title,
+            model: carModel.title,
+            logo: carBrand.logoFilename,
+          },
+        });
+      });
+    }
+  });
+  test.describe(`Create Fiat cars`, () => {
+    const carBrand = CAR_BRANDS.Fiat;
+    for (const carModel of Object.values(CAR_MODELS.FIAT)) {
+      test(`Create car ${carBrand.title} ${carModel.title}`, async ({
+        request,
+      }) => {
+        const requestBody = {
+          carBrandId: carBrand.id,
+          carModelId: carModel.id,
+          mileage: Math.floor(Math.random() * 100),
+        };
 
-  //       const response = await request.post("/api/cars", {
-  //         data: requestBody,
-  //       });
+        const response = await request.post("/api/cars", {
+          data: requestBody,
+        });
 
-  //       const actualBody = await response.json();
+        const actualBody = await response.json();
 
-  //       expect(response.status()).toBe(201);
-  //       expect(actualBody).toEqual({
-  //         status: "ok",
-  //         data: {
-  //           id: expect.any(Number),
-  //           carBrandId: requestBody.carBrandId,
-  //           carModelId: requestBody.carModelId,
-  //           initialMileage: requestBody.mileage,
-  //           updatedMileageAt: expect.any(String),
-  //           carCreatedAt: expect.any(String),
-  //           mileage: requestBody.mileage,
-  //           brand: carBrand.title,
-  //           model: carModel.title,
-  //           logo: carBrand.logoFilename,
-  //         },
-  //       });
-  //     });
-  //   }
-  // });
+        expect(response.status()).toBe(201);
+        expect(actualBody).toEqual({
+          status: "ok",
+          data: {
+            id: expect.any(Number),
+            carBrandId: requestBody.carBrandId,
+            carModelId: requestBody.carModelId,
+            initialMileage: requestBody.mileage,
+            updatedMileageAt: expect.any(String),
+            carCreatedAt: expect.any(String),
+            mileage: requestBody.mileage,
+            brand: carBrand.title,
+            model: carModel.title,
+            logo: carBrand.logoFilename,
+          },
+        });
+      });
+    }
+  });
   test("create Porsche 911 and add expenses for it", async ({ request }) => {
     const requestBody = {
       carBrandId: 4,
