@@ -3,7 +3,7 @@ import { request } from "https";
 import { CAR_BRANDS } from "../../src/data/carBrand";
 import { CAR_MODELS } from "../../src/data/carModels";
 
-test.describe.only("add all cars and expenses", () => {
+test.describe("add all cars and expenses", () => {
   test.beforeEach(async ({ request }) => {
     const loginResponse = await request.post("/api/auth/signin", {
       data: {
