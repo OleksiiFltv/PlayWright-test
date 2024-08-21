@@ -38,7 +38,7 @@ const config = defineConfig({
 
     baseURL: "https://qauto.forstudy.space/",
     headless: false,
-    storageState: "./env/.env.dev",
+    storageState: "storageState.json",
     httpCredentials: {
       username: "guest",
       password: "welcome2qauto",
