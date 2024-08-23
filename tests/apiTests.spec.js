@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { request } from "https";
 
-test.describe.only("API tests of adding cars", () => {
+test.describe("API tests of adding cars", () => {
   test.beforeEach(async ({ request }) => {
     const loginResponse = await request.post("/api/auth/signin", {
       data: {
