@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test.only("Mock profile", async ({ page }) => {
+test("Mock profile", async ({ page }) => {
   const sigInBtn = page.locator(".header_signin");
   const emailInput = page.locator("#signinEmail");
   const passwordInput = page.locator("#signinPassword");
