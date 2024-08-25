@@ -1,11 +1,10 @@
 import { expect, test } from "@playwright/test";
-import { CAR_BRANDS } from "../../../src/data/carBrand";
-import CarsController from "../../../src/controllers/CarsController";
 import { CAR_MODELS } from "../../../src/data/carModels";
 
-test.describe("get user cars by id", () => {
+test.describe("update car", () => {
   let carController;
   const carBrand = CAR_BRANDS.Porsche;
+
   test.beforeAll(async ({ request }) => {
     const loginResponse = await request.post("/auth/signin", {
       data: {
@@ -23,31 +22,35 @@ test.describe("get user cars by id", () => {
 
   carController = new CarsController(request);
   for (const carModel of Object.values(CAR_MODELS.Porsche)) {
-    test(`create a car ${carBrand.title} ${carModel.title} and verify it by ID`, async ({
-      reqest,
-    }) => {
-      const requestBody = {
+    test(`create and update car`, async ({ reqest }) => {
+      const createRequestBody = {
         carBrandId: carBrand.id,
         carModelId: carModel.id,
         mileage: Math.floor(Math.random() * 100),
       };
 
-      const createResponse = await carController.createCar(requestBody); // создаем машину
+      const createResponse = await carController.createCar(createRequestBody); // создаем машину
       expect(createResponse.status()).toBe(201);
 
       const createdCar = await createResponse.json();
       expect(createdCar.status).toBe("ok");
 
-      const carId = createdCar.data.id; //получаю айдишник созданой машины
-      const getUserCarID = await carController.getCurrentUserCarByID(carId); // по айдишнику ищем машину
+      const updateMileage = Math.floor(Math.random() * 100) + 100; // новый mileage
+      const updateRequestBody = {
+        mileage: updateMileage,
+      };
 
-      expect(getUserCarID.status()).toBe(200);
+      const updateResponse = await carController.updateCar(
+        createdCar.data.id,
+        updateRequestBody
+      );
 
-      const carData = await getUserCarID.json();
-      expect(carData.status).toBe("ok");
-      expect(carData.data.id).toBe(carId);
-      expect(carData.data.brand).toBe(carBrand.title);
-      expect(carData.data.model).toBe(carModel.title);
+      expect(updateResponse.status()).toBe(200);
+
+      const updatedCar = await updateResponse.json();
+
+      expect(updatedCar.status).toBe("ok");
+      expect(updatedCar.data.mileage).toBe(updateMileage);
     });
   }
 

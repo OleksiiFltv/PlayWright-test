@@ -3,7 +3,7 @@ import { CAR_BRANDS } from "../../../src/data/carBrand";
 import { CAR_MODELS } from "../../../src/data/carModels";
 import CarsController from "../../../src/controllers/CarsController";
 
-test.describe.only("create car", () => {
+test.describe("create car", () => {
   const carBrand = CAR_BRANDS.BMW;
   test.beforeAll(async ({ request }) => {
     const loginResponse = await request.post("/auth/signin", {
