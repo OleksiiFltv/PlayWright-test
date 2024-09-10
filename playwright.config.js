@@ -28,6 +28,8 @@ const config = defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "https://qauto.forstudy.space/",
+    headless: true,
+
     httpCredentials: {
       username: "guest",
       password: "welcome2qauto",
